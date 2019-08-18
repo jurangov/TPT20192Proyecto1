@@ -11,5 +11,5 @@ COPY package*.json ./
 RUN npm install
 #Bundle server source
 COPY . .
-EXPOSE 8080
+EXPOSE 3000
 CMD ["node", "index.js"]
