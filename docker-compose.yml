@@ -18,3 +18,10 @@ services:
     build: server
     ports:
       - "3000:3000"
+    links:
+      - mongo-db-server
+  mongo-db-server:
+    container_name: mongo-db-server
+    image: mongo
+    ports:
+      - "27017:27017"
