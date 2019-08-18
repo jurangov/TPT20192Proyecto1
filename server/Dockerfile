@@ -1,5 +1,8 @@
 FROM node:10
 
+
+ARG PORT=3000
+ENV PORT $PORT
 #Create app directory inside the container
 WORKDIR /usr/src/app
 #Install app dependencies
