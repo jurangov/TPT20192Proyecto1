@@ -1,10 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const commentRouter = express.Router();
 
-router.get('/', (req, res) => {
-    res.json({
-        status: 'Api works'
-    });
-});
+const commentController = require('../controllers/comment.controller');
 
-module.exports = router;
+commentRouter.get('/', commentController.getComments);
+commentRouter.post('/', commentController.createComment);
+commentRouter.get('/:id', commentController.getCommentById);
+commentRouter.get('/theme/:theme', commentController.getCommentByTheme);
+commentRouter.put('/:id', commentController.updateComment);
+commentRouter.delete('/:id', commentController.deleteComment);
+
+module.exports = commentRouter;

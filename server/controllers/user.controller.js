@@ -1,21 +1,21 @@
 const User = require('../models/User');
-const employeeController = {};
+const userController = {};
 
 
-employeeController.getUsers = async (req, res) => {
+userController.getUsers = async (req, res) => {
     const users = await User.find();
     res.json(users);
 }
 
-employeeController.createUser = async (req, res) => {
+userController.createUser = async (req, res) => {
     const user = new User(req.body);
     await user.save();
     res.json({
         status: 'User created'
-    });
+    });  
 }
 
-employeeController.updateUser = async (req, res) => {
+userController.updateUser = async (req, res) => {
     const user = {
         name: req.body.name,
         career: req.body.career,
@@ -28,16 +28,21 @@ employeeController.updateUser = async (req, res) => {
     });
 }
 
-employeeController.deleteUser = async (req, res) => {
+userController.deleteUser = async (req, res) => {
     await User.findByIdAndRemove(req.params.id);
     res.json({
         status: 'User deleted'
     });
 }
 
-employeeController.getUserById = async (req, res) => {
+userController.getUserById = async (req, res) => {
     const user = await User.findById(req.params.id);
     res.json(user);
 }
 
-module.exports = employeeController;
+userController.userLogin = async (req, res) => {
+    const users = await User.find({password:req.body.password})
+    res.json(users);
+}
+
+module.exports = userController;
