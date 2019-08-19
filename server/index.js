@@ -17,9 +17,7 @@ server.use(express.json());
 server.set('port', process.env.PORT || PORT)
 
 //Routes
-server.get('/', (req, res) => {
-  res.send('Hello world\n');
-});
+server.use('/api/users', require('./routes/user.router'));
 
 //Starting server
 server.listen(server.get('port'), HOST);
