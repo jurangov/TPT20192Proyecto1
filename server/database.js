@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://mongo-db-server/project1';
+const URI = 'mongodb://mongo-db-server/project_1';
 
 mongoose.connect(URI)
     .then(db => console.log('DB is connected'))
